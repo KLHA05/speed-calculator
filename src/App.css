@@ -1,4 +1,4 @@
-/* 1. Set a dark backdrop for the entire page so the card stands out */
+/* 1. Global Page Styles */
 body {
     background-color: #242424;
     min-height: 100vh;
@@ -11,29 +11,35 @@ body {
 
 #root {
     width: 100%;
-    padding: 2rem;
-    text-align: center;
+    padding: 1rem; /* Reduced padding to give more room on mobile */
+    box-sizing: border-box; /* Ensures padding doesn't widen the screen */
 }
 
-/* 2. The main card styling */
+/* 2. The Main Card */
 .container {
-    /* DESIRED CHANGE: Light grey background for the card */
     background-color: #e6e6e6;
-    /* DESIRED CHANGE: Dark text color so headlines are readable on light grey */
     color: #333333;
-
     padding: 2.5rem;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2); /* Stronger shadow for depth */
-    max-width: 600px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+    /* RESPONSIVE FIX: */
+    width: 100%;       /* Try to be full width... */
+    max-width: 500px;  /* ...but stop at 500px */
     margin: auto;
+    box-sizing: border-box; /* Ensures padding is included in width */
 }
 
 h1 {
     margin-top: 0;
-    color: #222; /* Slightly darker headline */
+    color: #222;
+    /* RESPONSIVE FIX for long German words: */
+    word-wrap: break-word;
+    hyphens: auto; /* Adds a hyphen (-) if the word is too long */
+    line-height: 1.2;
 }
 
+/* 3. Input Groups */
 .input-group {
     margin-bottom: 20px;
     text-align: left;
@@ -46,32 +52,38 @@ label {
     color: #444;
 }
 
-/* 3. Input field styling */
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
 input {
-    width: 100%;
+    flex: 2;
     padding: 12px;
     box-sizing: border-box;
     border-radius: 6px;
-    font-size: 1rem;
-
-    /* DESIRED CHANGE: White input background */
+    font-size: 1rem; /* 16px prevents zooming on iPhone */
     background-color: #ffffff;
-    /* DESIRED CHANGE: Black text inside input */
     color: #000000;
     border: 1px solid #ccc;
-    transition: border-color 0.2s;
 }
 
-input:focus {
-    outline: none;
-    border-color: #646cff;
+select {
+    flex: 1;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ccc;
+    cursor: pointer;
 }
 
 button {
     width: 100%;
     background-color: #646cff;
     color: white;
-    padding: 12px;
+    padding: 14px; /* Slightly larger touch target for mobile */
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -85,17 +97,55 @@ button:hover {
     background-color: #535bf2;
 }
 
-/* Result area styling */
+/* 4. Results */
 .result {
     margin-top: 25px;
     padding: 15px;
-    /* A slightly different shade to separate result from the card */
     background-color: #d1d9ff;
     border-radius: 8px;
     color: #1a1a2e;
     border: 1px solid #a5b4fc;
+    text-align: center;
 }
 
 .result h2 {
-    margin: 0 0 10px 0;
+    margin: 0 0 15px 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.result-item {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.small-text {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0;
+}
+
+/* --- MOBILE SPECIFIC STYLES --- */
+@media (max-width: 480px) {
+    /* 1. Make the container padding smaller so there is more room for text */
+    .container {
+        padding: 1.5rem;
+    }
+
+    /* 2. Shrink the headline so "Geschwindigkeitsrechner" fits */
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    /* 3. Stack the input and the dropdown vertically */
+    .input-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    /* 4. Make dropdown full width when stacked */
+    select {
+        width: 100%;
+    }
 }

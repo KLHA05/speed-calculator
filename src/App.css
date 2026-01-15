@@ -126,6 +126,42 @@ button:hover {
     margin-bottom: 0;
 }
 
+.gps-section {
+    margin-bottom: 20px;
+}
+
+.gps-result {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #2a9d8f;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.gps-result h3 {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.gps-big-number {
+    font-size: 3.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.gps-big-number .unit {
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.error-text {
+    color: #e63946;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
 /* --- MOBILE SPECIFIC STYLES --- */
 @media (max-width: 480px) {
     /* 1. Make the container padding smaller so there is more room for text */
